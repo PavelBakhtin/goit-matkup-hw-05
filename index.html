@@ -18,7 +18,7 @@
             <a href="./" class="logo"><span class="logoaccent">Web</span><span class="logo-dark">Studio</span></a>
         <nav class="header-nav">
             <ul class="list">
-                <li class="site-nav-text"><a href="" class="header-link link">Студия</a></li>
+                <li class="site-nav-text"><a href="./index.html" class="header-link link current">Студия</a></li>
                 <li class="site-nav-text"><a href="./portfolio.html" class="header-link link">Портфолио</a></li>
                 <li class="site-nav-text"><a href="" class="header-link link">Контакты</a></li>
             </ul>
@@ -38,7 +38,13 @@
         <section class="hero">
             <div class="container">
             <h1 class="hero-headline">Эффективные решения для вашего бизнеса</h1>
-            <div class="hero-button-div"><button type="button" class="hero-button">Заказать услугу</button>
+            <div class="hero-button-div">
+                <button data-modal-open type="button" class="hero-button">Заказать услугу</button>
+                <div class="backdrop is-hidden" data-modal>
+                    <div class="modal">
+                        <button class="close-item" data-modal-close><svg class="close-icon" width="11" height="11"><use href="./images/icons.svg#icon-close"></use></svg></button>  
+                    </div>
+                </div>
             </div> 
         </div> 
         </section>
@@ -54,7 +60,7 @@
                     </li>
                     <li>
                         <div class="qualities-bg"><svg class="qualities-icon" width="70" height="70" ><use href="./images/icons.svg#icon-clock"></use></svg></div>
-                        <h3 class="qualities-title">пунктуальность</h3>
+                        <h3 class="qualities-title">Пунктуальность</h3>
                         <p class="qualities-text">Задача организации, в особенности же рамки и место обучения кадров влечет за собой.</p>
                     </li>
                     <li>
@@ -75,9 +81,12 @@
             <div class="container">               
             <h2 class="section-title activity-title">Чем мы занимаемся</h2>
                 <ul class="list">
-                    <li><a href=""><img src="./images/box1.jpg" alt="изображение 1" width="370"></a></li>
-                    <li><a href=""><img src="./images/box2.jpg" alt="изображение 3" width="370"></a></li>
-                    <li><a href=""><img src="./images/box3.jpg" alt="изображение 3" width="370"></a></li>
+                    <li class="activity-item"><a href=""><img src="./images/box1.jpg" alt="изображение 1" width="370">
+                    <div class="activity-overlay"><h3>Десктопные приложения</h3></div></a></li>
+                    <li class="activity-item"><a href=""><img src="./images/box2.jpg" alt="изображение 3" width="370">
+                    <div class="activity-overlay"><h3>Мобильные приложения</h3></div></a></li>
+                    <li class="activity-item"><a href=""><img src="./images/box3.jpg" alt="изображение 3" width="370">
+                    <div class="activity-overlay"><h3>Дизайнерские решения</h3></div></a></li>
                  </ul>
                 </div> 
          </section>
@@ -173,5 +182,6 @@
             </div>
         </div>
             </footer>
+<script src="./js/modal.js"></script>
 </body>
 </html>

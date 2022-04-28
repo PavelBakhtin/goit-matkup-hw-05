@@ -7,6 +7,7 @@
     --dark-background: #2F303A;
     --light-background: #F5F4FA;    
     --icon-filler: #AFB1B8;
+    --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -31,10 +32,12 @@ h1,h2,h3,h4,h5,h6,p {
   border-bottom: 1px solid #ECECEC;
   padding-top: 24px;
   padding-bottom: 25px;
+  
 }
 .header .container {
   display: flex;
   align-items: center;
+  
 }
 
 .logo {
@@ -58,6 +61,7 @@ h1,h2,h3,h4,h5,h6,p {
 .header-nav {
   display: flex;
   align-items: center;
+  
  
 }
 .header-nav .list {
@@ -66,7 +70,7 @@ h1,h2,h3,h4,h5,h6,p {
 }
 .contacts-nav .list {
   display: flex;
-  align-items: center
+  align-items: center;
   
   }
 .site-nav-text+.site-nav-text {
@@ -80,10 +84,14 @@ h1,h2,h3,h4,h5,h6,p {
  display: flex;
  align-items: center;
  margin-left: auto;
+ 
 }
 .header-link {
   display: flex;
   align-items: center;
+  transition: color 250ms var(--animation-timing-function);
+ 
+  
 }
 .header-link:hover.contacts-icon {
   fill: var(--accent-color);
@@ -127,18 +135,34 @@ h1,h2,h3,h4,h5,h6,p {
     font-size: 14px;
     line-height: 1.14;
     color: var(--title-text-color);
+    
   }
   .site-contacts-text {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14;
     
+    
   }
   .current {
       color: var(--accent-color);
+      position: relative;
+      
   }
+
+  .current::after {
+    content: "";
+    position: absolute;
+    bottom: -33px;
+       background-color: var(--accent-color);
+      height: 4px; 
+      border-radius: 2px;
+       width: 100%;
+     }
+    
   /* ---------------Hero---------------- */
   .hero {
+    
     max-width: 1600px;
     margin: 0 auto;
       background: var(--dark-background);
@@ -150,6 +174,22 @@ h1,h2,h3,h4,h5,h6,p {
       background-size:cover;
          
   }
+ 
+  .close-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 11px;
+    margin-right: 8px;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background-color: var(--primary-white-color);
+    cursor: pointer;
+  }
+
   .hero-headline {
     width: 696px;
     margin-bottom: 30px;
@@ -177,15 +217,51 @@ h1,h2,h3,h4,h5,h6,p {
     font-weight: 700;
     font-size: 16px;
     line-height: 1.88;
-   
     letter-spacing: 0.06em;
     color: var(--primary-white-color);
-    cursor:pointer
+    cursor:pointer;
+
+    transition: background-color 250ms var(--animation-timing-function);
   }
     .hero-button:hover, .hero-button:focus{
     background-color: #188CE8;
     }
+    .backdrop {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+          
+      background-color: rgba(0, 0, 0, 0.2);
+      transition: opacity 250ms var(--animation-timing-function), visibility 250ms var(--animation-timing-function);
+    }
+    .modal {
+      position: absolute;
+      
+      top: 50%;
+      left: 50%;
+      width: 528px;
+      height: 581px;
+      background-color: var(--primary-white-color); 
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      
+      
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 250ms var(--animation-timing-function), opacity 250ms var(--animation-timing-function), visibility 250ms var(--animation-timing-function);
 
+     
+    }
+    .backdrop.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .backdrop.is-hidden .modal {
+      transform: scale(1.2) translate(-50%, -50%);
+    }
   .section-title {
     font-weight: 700;
     font-size: 36px;
@@ -234,6 +310,7 @@ h1,h2,h3,h4,h5,h6,p {
   /* Чем мы занимаемся */
   .activity {
   padding-bottom: 94px;
+  
   }
   .activity-title {
     margin-bottom: 50px;
@@ -243,6 +320,29 @@ h1,h2,h3,h4,h5,h6,p {
     justify-content: space-between;
     align-items: center;
     
+  }
+  .activity-item {
+   position: relative;
+   z-index: 0;
+    
+  }
+  .activity-overlay {
+    position: absolute;
+    bottom:3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(47, 48, 58, 0.8);
+
+    color: var(--primary-white-color);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+     text-transform: uppercase;
+
   }
   
   /* <!-- Наша команда --> */
@@ -298,6 +398,7 @@ h1,h2,h3,h4,h5,h6,p {
     height: 44px;
     border-radius: 50%;
     margin-bottom: 30px;
+    transition: background-color 250ms var(--animation-timing-function), fill 250ms var(--animation-timing-function);
       
   }
   .team-soc-icon {
@@ -348,6 +449,7 @@ h1,h2,h3,h4,h5,h6,p {
     border: 1px solid var(--icon-filler);
     box-sizing: border-box;
     border-radius: 4px;
+    transition: box-shadow 250ms var(--animation-timing-function), border-color 250ms var(--animation-timing-function), fill 250ms var(--animation-timing-function);
   }
   
   .clients-item:hover {
@@ -424,6 +526,7 @@ h1,h2,h3,h4,h5,h6,p {
     border-radius: 50%;
     margin-right: 10px;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
       
   }
@@ -442,6 +545,7 @@ h1,h2,h3,h4,h5,h6,p {
  .portfolio {
    padding-top: 94px;
    padding-bottom: 94px;
+   position: relative;
  }
     .button-item {
     padding: 6px 22px;
@@ -455,6 +559,7 @@ h1,h2,h3,h4,h5,h6,p {
     border-radius: 4px;
     cursor:pointer;
     border: 0;
+    transition: box-shadow 250ms var(--animation-timing-function), color 250ms var(--animation-timing-function), background-color 250ms var(--animation-timing-function);
     }
     .button-item:active {
     color: var(--primary-white-color);
@@ -505,9 +610,36 @@ h1,h2,h3,h4,h5,h6,p {
     border-right: 1px solid #EEEEEE;
     border-left: 1px solid #EEEEEE;
   }
+  .portfolio-card {
+    transition:box-shadow 250ms var(--animation-timing-function)
+  }
 
-  .portfolio-link:hover, .portfolio-link:focus  {
+  .portfolio-card:hover, .portfolio-card:focus  {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 
   }
-   
+  .portfolio-card-thumb {
+    position: relative;
+    overflow: hidden;
+    
+  }
+ .portfolio-card-text {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   padding: 63px 24px;
+   font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--primary-white-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform 250ms var(--animation-timing-function);
+
+ }
+ .portfolio-card:hover .portfolio-card-text , .portfolio-card:focus .portfolio-card-text  {
+  transform: translateY(0);
+ }
+ 
