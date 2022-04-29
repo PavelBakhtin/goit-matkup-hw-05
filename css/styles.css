@@ -328,7 +328,7 @@ h1,h2,h3,h4,h5,h6,p {
   }
   .activity-overlay {
     position: absolute;
-    bottom:3px;
+    bottom:0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -347,7 +347,9 @@ h1,h2,h3,h4,h5,h6,p {
     line-height: 1.14;
      text-transform: uppercase;
   }
-  
+  .activity img { 
+    display: block;
+  }
   /* <!-- Наша команда --> */
   .team-section {
     background-color: var(--light-background);
@@ -607,6 +609,9 @@ h1,h2,h3,h4,h5,h6,p {
     margin-left: 30px;
     
       
+  }
+  .portfolio-card img {
+    display: block;
   }
   .portfolio-info {
     padding: 20px 24px;
